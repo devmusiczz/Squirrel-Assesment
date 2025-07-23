@@ -16,7 +16,7 @@ export default function DoctorSearch() {
 
 
     const res = await fetch(
-      `http://localhost:8080/api/doctors/search?lat=${location.lat}&lng=${location.lng}`
+      `https://squirrel-assesment.onrender.com/api/doctors/search?lat=${location.lat}&lng=${location.lng}`
     );
     const data = await res.json();
     console.log(data)

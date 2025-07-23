@@ -7,10 +7,12 @@ const app = express();
 
 // ✅ Add CORS middleware FIRST (before routes or body parser)
 app.use(cors({
-  origin: "http://localhost:3000", // Allow your React app
-  methods: ["GET", "POST"],        // Optional: allow only necessary methods
+  origin: [
+    "http://localhost:3000",                      // dev
+    "https://squirrel-assesment.vercel.app"       // deployed
+  ], // ✅ allow frontend domain
+  methods: ["GET", "POST"],
 }));
-
 app.use(express.json()); // Parse JSON request bodies
 
 mongoose.connect(process.env.MONGO_URI, {

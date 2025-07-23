@@ -29,7 +29,7 @@ export default function DoctorForm() {
   const handleSubmit = async () => {
     if (!name || !marker) return alert("Enter name and select location");
 
-    const res = await fetch("http://localhost:8080/api/doctors", {
+    const res = await fetch("https://squirrel-assesment.onrender.com/api/doctors", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
