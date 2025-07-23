@@ -5,14 +5,14 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ Add CORS middleware FIRST (before routes or body parser)
 app.use(cors({
   origin: [
     "http://localhost:3000",                      // dev
     "https://squirrel-assesment.vercel.app"       // deployed
-  ], // ✅ allow frontend domain
+  ],
   methods: ["GET", "POST"],
 }));
+
 app.use(express.json()); // Parse JSON request bodies
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error("MongoDB connection error:", err));
 
 
-// ✅ Define your routes AFTER middleware
+// ROUTES
 app.use('/api/doctors', require('./routes/doctors'));
 
 const PORT = process.env.PORT || 8080;
