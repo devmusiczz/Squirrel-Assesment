@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from "react";
 import { getCoordinatesFromAddress } from "../utils/geocode";
 
@@ -10,12 +11,15 @@ export default function DoctorSearch() {
     if (!query) return;
 
     const location = await getCoordinatesFromAddress(query);
+    console.log("Searching near:", location);
     if (!location) return alert("Could not find location");
 
+
     const res = await fetch(
-      `http://localhost:5000/api/doctors/search?lat=${location.lat}&lng=${location.lng}`
+      `http://localhost:8080/api/doctors/search?lat=${location.lat}&lng=${location.lng}`
     );
     const data = await res.json();
+    console.log(data)
     setResults(data);
   };
 
